@@ -1,7 +1,7 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
-#include <gtkmm/box.h>
+#include <gtkmm/grid.h>
 #include <gtkmm/window.h>
 #include <gtkmm/button.h>
 #include <gtkmm/label.h>
@@ -19,7 +19,7 @@ protected:
   void on_button_clicked();
 
   // Child widgets:
-  Gtk::Box box_login;
+  Gtk::Grid grid_login;
   Gtk::Label lbl_name, lbl_password;
   Gtk::Entry en_name, en_password;
   Gtk::Separator m_Separator;

@@ -4,39 +4,31 @@
 #include <iostream>
 
 static ViewModel_login viewmodel;
-Login::Login() : box_login(Gtk::Orientation::VERTICAL),
-                 btn_login("login"),
+Login::Login() : btn_login("login"),
                  lbl_name("Name: "),
                  lbl_password("Password: ")
 {
   set_title("Login");
 
-  set_child(box_login);
+  set_child(grid_login);
 
-  // Margenes de los componetes y expandir
-  lbl_name.set_margin(10);
-  lbl_name.set_expand();
-  en_name.set_margin(10);
-  en_name.set_expand();
-  lbl_password.set_margin(10);
-  lbl_password.set_expand();
-  en_password.set_margin(10);
-  en_password.set_expand();
-  btn_login.set_margin(10);
-  btn_login.set_expand();
+  btn_login.set_margin(15);
+  lbl_password.set_margin_top(10);
 
   // Name de mi box
-  box_login.set_name("box");
+  grid_login.set_name("my_grid");
+  grid_login.set_halign(Gtk::Align::CENTER);
+  grid_login.set_valign(Gtk::Align::CENTER);
 
   // Añadir los componentes al box
-  box_login.append(lbl_name);
-  box_login.append(en_name);
+  grid_login.attach(lbl_name, 0, 0);
+  grid_login.attach(en_name, 0, 1);
 
-  box_login.append(lbl_password);
-  box_login.append(en_password);
+  grid_login.attach(lbl_password, 0, 2);
+  grid_login.attach(en_password, 0, 3);
 
-  box_login.append(m_Separator);
-  box_login.append(btn_login);
+  grid_login.attach(m_Separator, 0, 4);
+  grid_login.attach(btn_login, 0, 5);
 
   // Indicar el widget pordefecto
   set_default_widget(btn_login);
