@@ -1,5 +1,6 @@
 #include "clases/login.h"
 #include "viewModel/viewModel.h"
+#include "clases/radiobuttons.h"
 #include <gtkmm.h>
 #include <iostream>
 
@@ -46,11 +47,21 @@ void Login::on_button_clicked()
 {
   if (viewmodel.getUser() == en_name.get_text() && viewmodel.getPassword() == en_password.get_text())
   {
-    std::cout << "Session iniciada" << std::endl;
-    hide();
+    std::cout << "Sesión iniciada" << std::endl;
+    //  this->set_visible(false);
+    rbWindow = new RadioButtons;
+    rbWindow->signal_hide().connect(sigc::mem_fun(*this, &Login::RadioButtonsClose));
+    rbWindow->show();
+
+    // Crear y ejecutar la ventana de RadioButtons
+    // this->close(); // Cierra la ventana de inicio de sesión
   }
   else
   {
-    std::cout << "Error en la contrasela o usuario" << std::endl;
+    std::cout << "Error en la contraseña o usuario" << std::endl;
   }
+}
+void Login::RadioButtonsClose()
+{
+  rbWindow = 0;
 }
