@@ -49,12 +49,11 @@ void Login::on_button_clicked()
   {
     std::cout << "Sesión iniciada" << std::endl;
     //  this->set_visible(false);
-    rbWindow = new RadioButtons;
+    rbWindow = new RadioButtons();
+    this->get_application()->add_window(*rbWindow);
     rbWindow->signal_hide().connect(sigc::mem_fun(*this, &Login::RadioButtonsClose));
     rbWindow->show();
-
-    // Crear y ejecutar la ventana de RadioButtons
-    // this->close(); // Cierra la ventana de inicio de sesión
+    this->get_application()->remove_window(*this);
   }
   else
   {
